@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { Contact } from '../types/index';
 import { ref, onMounted, computed } from 'vue';
 import { useContactsStore } from '../stores/contacts';
 import { useRouter } from 'vue-router';
@@ -33,7 +34,7 @@ const getContact = (id: number) => {
 };
 
 const saveContact = () => {
-  const user = {
+  const user: Contact = {
     id: id,
     name: name.value,
     phone: phone.value,
