@@ -45,7 +45,6 @@ export const useContactsStore = defineStore('taskStore', () => {
   };
 
   const saveContacts = () => {
-    contacts.value = temporaryStorageContacts.value;
     const parsed = JSON.stringify(contacts.value);
     localStorage.setItem('contacts', parsed);
   };
