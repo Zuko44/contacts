@@ -36,6 +36,8 @@ const saveContact = () => {
     email: email.value,
   };
   contactsStore.editContactHandler(user);
+  divClass.value = 'success';
+  msg.value = 'Контакт изменён успешно!';
 };
 
 const deleteContactHandler = (id: number) => {
