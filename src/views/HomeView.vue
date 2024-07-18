@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import TheWelcome from '../components/TheWelcome.vue'
+import ContactForm from '@/components/ContactForm.vue';
+import ContactList from '@/components/ContactList.vue';
 </script>
 
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+  <ContactForm />
+  <ContactList />
 </template>
