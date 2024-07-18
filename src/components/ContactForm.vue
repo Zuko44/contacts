@@ -14,6 +14,7 @@ const regex = /^\d+$/;
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const createContactHandler = () => {
+  divClass.value = '';
   if (
     name.value.length > 2 &&
     phone.value.length > 10 &&
@@ -44,7 +45,9 @@ const createContactHandler = () => {
 
 <template>
   <div class="wrapper">
-    <div v-if="msg.length > 1" :class="divClass">{{ msg }}</div>
+    <Transition name="fade">
+      <div v-if="msg.length > 1" :class="divClass">{{ msg }}</div>
+    </Transition>
     <form @submit.prevent>
       <input v-model="name" class="input" type="text" placeholder="Name" />
       <input v-model="phone" class="input" type="tel" placeholder="Phone" />
@@ -96,5 +99,18 @@ form {
 }
 .success {
   color: green;
+}
+
+.fade-enter-active {
+  animation: fade-in 1s ease-in-out;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 </style>

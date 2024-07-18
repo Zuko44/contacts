@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { ref, onMounted, computed } from 'vue';
-import router from '../router';
 import { useContactsStore } from '../stores/contacts';
+import { useRouter } from 'vue-router';
 
 interface Props {
   id: number;
 }
 
+const router = useRouter();
 const contactsStore = useContactsStore();
 const props = defineProps<Props>();
 const id = props.id;
@@ -45,7 +46,11 @@ const saveContact = () => {
 
 const deleteContactHandler = (id: number) => {
   contactsStore.deleteContactHandler(id);
-  router.push({ name: 'home' });
+  divClass.value = 'success';
+  msg.value = 'Контакт успешно удалён';
+  setTimeout(() => {
+    router.push('/');
+  }, 800);
 };
 
 const isValid = computed(() => {
@@ -65,7 +70,9 @@ onMounted(() => {
 
 <template>
   <div class="wrapper">
-    <div v-if="msg.length > 1" :class="divClass">{{ msg }}</div>
+    <Transition name="fade">
+      <div v-if="msg.length > 1" :class="divClass">{{ msg }}</div>
+    </Transition>
     <form action="" method="POST">
       <fieldset>
         <legend>id</legend>
@@ -234,5 +241,18 @@ textarea {
 
 .link {
   margin-top: 15px;
+}
+
+.fade-enter-active {
+  animation: fade-in 1s ease-in-out;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 </style>
