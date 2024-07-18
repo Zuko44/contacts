@@ -30,16 +30,6 @@ const props = defineProps<Props>();
 </template>
 
 <style scoped>
-input {
-  width: 1120px;
-  height: 48px;
-  border-radius: 24px;
-  border: 1px solid rgba(212, 222, 254, 1);
-  outline: none;
-  padding-left: 20px;
-  margin: 24px 0px;
-}
-
 .contact {
   width: 357px;
   height: 314px;

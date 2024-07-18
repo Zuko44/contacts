@@ -146,15 +146,6 @@ onMounted(() => {
   text-align: center;
 }
 
-.public {
-  margin-top: 10px;
-  color: RGB(128, 128, 128);
-}
-
-.public input {
-  margin: 0px 5px;
-}
-
 fieldset {
   border: 1px solid RGB(0, 158, 226);
   border-radius: 8px;
@@ -177,14 +168,6 @@ legend {
   padding: 10px;
   outline: none;
   background: white;
-}
-
-textarea {
-  border: none;
-  width: 318px;
-  height: 100px;
-  padding: 10px;
-  outline: none;
 }
 
 .btn {

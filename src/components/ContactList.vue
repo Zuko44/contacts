@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import type { Contact } from '../types/index';
 import ContactItem from './ContactItem.vue';
 import { useContactsStore } from '../stores/contacts';
 
