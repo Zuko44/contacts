@@ -26,7 +26,7 @@ const filterContacts = debounce(() => {
       class="input"
       type="text"
       v-model="simpleFilter"
-      placeholder="найти контакт"
+      placeholder="find contact"
       @input="filterContacts"
     />
   </div>
