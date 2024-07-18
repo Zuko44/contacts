@@ -5,6 +5,7 @@ import communications from '../sources/contacts.json';
 
 export const useContactsStore = defineStore('taskStore', () => {
   const contacts = ref<Contact[]>([]);
+  const temporaryStorageContacts = ref<Contact[]>([]);
 
   const findContactHandler = (id: number) => {
     const contact = contacts.value.find(
@@ -49,8 +50,10 @@ export const useContactsStore = defineStore('taskStore', () => {
     if (contactsOnLocalStorage !== null) {
       contactsStorage = JSON.parse(contactsOnLocalStorage);
       contacts.value = contactsStorage;
+      temporaryStorageContacts.value = contactsStorage;
     } else {
       contacts.value = communications;
+      temporaryStorageContacts.value = communications;
     }
   };
 
@@ -60,6 +63,7 @@ export const useContactsStore = defineStore('taskStore', () => {
 
   return {
     contacts,
+    temporaryStorageContacts,
     findContactHandler,
     deleteContactHandler,
     createContactHandler,

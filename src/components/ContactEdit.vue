@@ -40,9 +40,7 @@ const saveContact = () => {
 
 const deleteContactHandler = (id: number) => {
   contactsStore.deleteContactHandler(id);
-  setTimeout(() => {
-    router.push({ name: 'home' });
-  }, 800);
+  router.push({ name: 'home' });
 };
 
 const isValid = computed(() => {

@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { Contact } from '../types/index';
-import { ref } from 'vue';
 
 interface Props {
   user: Contact;
