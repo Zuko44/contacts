@@ -16,29 +16,38 @@ export const useContactsStore = defineStore('taskStore', () => {
 
   const deleteContactHandler = (id: number) => {
     contacts.value = contacts.value.filter((p) => p.id !== id);
-    saveContacts();
-  };
-
-  const createContactHandler = (contact: Contact) => {
-    contacts.value.push(contact);
+    temporaryStorageContacts.value = temporaryStorageContacts.value.filter(
+      (p) => p.id !== id,
+    );
     saveContacts();
   };
 
   const editContactHandler = (user: Contact) => {
+    contacts.value = temporaryStorageContacts.value;
     const contact = contacts.value.find(
       (contact: Contact) => contact.id === user.id,
     );
     if (contact) {
       contact.name = user.name;
+      temporaryStorageContacts.name = user.name;
       contact.phone = user.phone;
+      temporaryStorageContacts.phone = user.phone;
       contact.email = user.email;
+      temporaryStorageContacts.email = user.email;
       saveContacts();
     } else {
       console.log('contact not found');
     }
   };
 
+  const createContactHandler = (contact: Contact) => {
+    contacts.value.push(contact);
+    temporaryStorageContacts.value.push(contact);
+    saveContacts();
+  };
+
   const saveContacts = () => {
+    contacts.value = temporaryStorageContacts.value;
     const parsed = JSON.stringify(contacts.value);
     localStorage.setItem('contacts', parsed);
   };
