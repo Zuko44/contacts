@@ -7,7 +7,7 @@ const name = ref<string>('');
 const phone = ref<string>('');
 const email = ref<string>('');
 const msg = ref<string>('');
-const divClass = ref<string>('');
+const isShowError = ref<string>('');
 const contactsStore = useContactsStore();
 
 const regex = /^\d+$/;
@@ -18,7 +18,7 @@ const MAX_MAIL_LENGTH = 320;
 const MIN_PHONE_LENGTH = 10;
 
 const createContactHandler = () => {
-  divClass.value = '';
+  isShowError.value = '';
   if (
     name.value.length > MIN_FULLNAME_LENGTH &&
     name.value.length < MAX_FULLNAME_LENGTH &&
@@ -38,10 +38,10 @@ const createContactHandler = () => {
     phone.value = '';
     email.value = '';
 
-    divClass.value = 'success';
+    isShowError.value = 'success';
     msg.value = 'Контакт успешно создан!';
   } else {
-    divClass.value = 'error';
+    isShowError.value = 'error';
     msg.value = 'Проверьте корректность полей и их заполнение!';
     console.log('error');
   }
@@ -51,7 +51,7 @@ const createContactHandler = () => {
 <template>
   <div class="wrapper">
     <Transition name="fade">
-      <div v-if="msg.length > 1" :class="divClass">{{ msg }}</div>
+      <div v-if="msg.length > 1" :class="isShowError">{{ msg }}</div>
     </Transition>
     <form @submit.prevent>
       <input v-model="name" class="input" type="text" placeholder="Name" />

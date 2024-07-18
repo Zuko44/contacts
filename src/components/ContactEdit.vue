@@ -17,7 +17,7 @@ const phone = ref<string>('');
 const email = ref<string>('');
 
 const msg = ref<string>('');
-const divClass = ref<string>('');
+const isShowError = ref<string>('');
 
 const regex = /^\d+$/;
 const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -45,13 +45,13 @@ const saveContact = () => {
     email: email.value,
   };
   contactsStore.editContactHandler(user);
-  divClass.value = 'success';
+  isShowError.value = 'success';
   msg.value = 'Контакт изменён успешно!';
 };
 
 const deleteContactHandler = (id: number) => {
   contactsStore.deleteContactHandler(id);
-  divClass.value = 'success';
+  isShowError.value = 'success';
   msg.value = 'Контакт успешно удалён';
   setTimeout(() => {
     router.push('/');
@@ -77,7 +77,7 @@ onMounted(() => {
 <template>
   <div class="wrapper">
     <Transition name="fade">
-      <div v-if="msg.length > 1" :class="divClass">{{ msg }}</div>
+      <div v-if="msg.length > 1" :class="isShowError">{{ msg }}</div>
     </Transition>
     <form action="" method="POST">
       <fieldset>
