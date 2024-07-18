@@ -7,13 +7,6 @@ export const useContactsStore = defineStore('taskStore', () => {
   const contacts = ref<Contact[]>([]);
   const temporaryStorageContacts = ref<Contact[]>([]);
 
-  const findContactHandler = (id: number) => {
-    const contact = contacts.value.find(
-      (contact: Contact) => contact.id === id,
-    );
-    return contact;
-  };
-
   const deleteContactHandler = (id: number) => {
     temporaryStorageContacts.value = temporaryStorageContacts.value.filter(
       (p) => p.id !== id,
@@ -69,7 +62,6 @@ export const useContactsStore = defineStore('taskStore', () => {
   return {
     contacts,
     temporaryStorageContacts,
-    findContactHandler,
     deleteContactHandler,
     createContactHandler,
     editContactHandler,

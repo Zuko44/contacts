@@ -18,7 +18,7 @@ const msg = ref<string>('');
 const divClass = ref<string>('');
 
 const getContact = (id: number) => {
-  const result = contactsStore.findContactHandler(id);
+  const result = contactsStore.contacts.find((contact) => contact.id === id);
   if (result) {
     console.log(result);
 
