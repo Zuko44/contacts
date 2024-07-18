@@ -17,7 +17,7 @@ const filterContacts = debounce(() => {
   } else {
     contactsStore.contacts = contactsStore.temporaryStorageContacts;
   }
-});
+}, 500);
 </script>
 
 <template>
