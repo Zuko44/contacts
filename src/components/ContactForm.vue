@@ -10,11 +10,16 @@ const msg = ref<string>('');
 const divClass = ref<string>('');
 const contactsStore = useContactsStore();
 
+const regex = /^\d+$/;
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 const createContactHandler = () => {
   if (
-    name.value.length > 1 &&
-    phone.value.length > 1 &&
-    email.value.length > 1
+    name.value.length > 2 &&
+    phone.value.length > 10 &&
+    regex.test(phone.value) &&
+    email.value.length > 1 &&
+    emailRegex.test(email.value)
   ) {
     const contact: Contact = {
       id: Math.floor(Math.random() * 1000000),
@@ -43,7 +48,7 @@ const createContactHandler = () => {
     <form @submit.prevent>
       <input v-model="name" class="input" type="text" placeholder="Name" />
       <input v-model="phone" class="input" type="tel" placeholder="Phone" />
-      <input v-model="email" class="input" type="text" placeholder="Email" />
+      <input v-model="email" class="input" type="email" placeholder="Email" />
       <button @click="createContactHandler" class="btn">Add new contact</button>
     </form>
   </div>

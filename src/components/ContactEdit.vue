@@ -17,6 +17,9 @@ const email = ref<string>('');
 const msg = ref<string>('');
 const divClass = ref<string>('');
 
+const regex = /^\d+$/;
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 const getContact = (id: number) => {
   const result = contactsStore.contacts.find((contact) => contact.id === id);
   if (result) {
@@ -47,7 +50,11 @@ const deleteContactHandler = (id: number) => {
 
 const isValid = computed(() => {
   return (
-    name.value.length > 0 && phone.value.length > 0 && email.value.length > 0
+    name.value.length > 2 &&
+    phone.value.length > 10 &&
+    regex.test(phone.value) &&
+    email.value.length > 1 &&
+    emailRegex.test(email.value)
   );
 });
 
