@@ -11,16 +11,21 @@ const divClass = ref<string>('');
 const contactsStore = useContactsStore();
 
 const regex = /^\d+$/;
-const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+const MAX_FULLNAME_LENGTH = 64;
+const MIN_FULLNAME_LENGTH = 2;
+const MAX_MAIL_LENGTH = 320;
+const MIN_PHONE_LENGTH = 10;
 
 const createContactHandler = () => {
   divClass.value = '';
   if (
-    name.value.length > 2 &&
-    phone.value.length > 10 &&
+    name.value.length > MIN_FULLNAME_LENGTH &&
+    name.value.length < MAX_FULLNAME_LENGTH &&
+    phone.value.length > MIN_PHONE_LENGTH &&
     regex.test(phone.value) &&
-    email.value.length > 1 &&
-    emailRegex.test(email.value)
+    email.value.length < MAX_MAIL_LENGTH &&
+    EMAIL_REGEX.test(email.value)
   ) {
     const contact: Contact = {
       id: Math.floor(Math.random() * 1000000),

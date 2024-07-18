@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import HomeView from '../views/HomeView.vue';
+import Contacts from '../views/Contacts.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -7,10 +7,10 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomeView,
+      component: Contacts,
     },
     {
-      path: '/edit/:id',
+      path: '/contacts/:id',
       name: 'editContact',
       props: (route) => ({ id: parseInt(route.params.id.toString()) }),
       component: () => import('../components/ContactEdit.vue'),

@@ -1,24 +1,23 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useContactsStore } from '../stores/contacts';
+import debounce from 'lodash/debounce';
 
 const simpleFilter = ref<string>('');
 const contactsStore = useContactsStore();
 
-const filterContacts = () => {
+const filterContacts = debounce(() => {
   if (simpleFilter.value.length > 1) {
     contactsStore.contacts = contactsStore.contacts.filter(
       (contact) =>
-        contact.name.includes(simpleFilter.value) ||
+        contact.name.toLowerCase().includes(simpleFilter.value.toLowerCase()) ||
         contact.phone.includes(simpleFilter.value) ||
         contact.email.includes(simpleFilter.value),
     );
-    console.log(contactsStore.contacts);
-    console.log(contactsStore.temporaryStorageContacts);
   } else {
     contactsStore.contacts = contactsStore.temporaryStorageContacts;
   }
-};
+});
 </script>
 
 <template>

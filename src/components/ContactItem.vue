@@ -13,19 +13,15 @@ const props = defineProps<Props>();
     <div class="name">{{ props.user.name }}</div>
     <div class="contacts_container">
       <div>
-        <img class="phone" src="../assets/icons/tel.svg" alt="phone" />{{
-          props.user.phone
-        }}
+        <img class="phone" src="../assets/icons/tel.svg" alt="phone" />
+        {{ props.user.phone }}
       </div>
       <div>
-        <img class="email" src="../assets/icons/email.svg" alt="email" />{{
-          props.user.email
-        }}
+        <img class="email" src="../assets/icons/email.svg" alt="email" />
+        {{ props.user.email }}
       </div>
     </div>
-    <RouterLink :to="'/edit/' + props.user.id"
-      >Редактировать контакт № {{ props.user.id }}
-    </RouterLink>
+    <RouterLink :to="'/contacts/' + props.user.id">Редактировать </RouterLink>
   </div>
 </template>
 

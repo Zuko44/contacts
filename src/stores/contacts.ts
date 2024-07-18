@@ -24,7 +24,7 @@ export const useContactsStore = defineStore('taskStore', () => {
       contact.phone = user.phone;
       contact.email = user.email;
     } else {
-      console.log('contact not found');
+      return 'contact not found';
     }
     contacts.value = temporaryStorageContacts.value;
     saveContacts();
