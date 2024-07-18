@@ -73,15 +73,33 @@ onMounted(() => {
       </fieldset>
       <fieldset>
         <legend>Имя</legend>
-        <input v-model="name" name="category" type="text" class="fields" />
+        <input
+          v-model="name"
+          name="category"
+          type="text"
+          class="fields"
+          placeholder="не менее 2-х символов"
+        />
       </fieldset>
       <fieldset>
         <legend>Телефон</legend>
-        <input v-model="phone" name="title" type="text" class="fields" />
+        <input
+          v-model="phone"
+          name="title"
+          type="tel"
+          class="fields"
+          placeholder="не менее 10-х символов"
+        />
       </fieldset>
       <fieldset>
         <legend>Почтовый адрес</legend>
-        <textarea v-model="email" name="description" type="text"></textarea>
+        <input
+          v-model="email"
+          name="email"
+          type="email"
+          class="fields"
+          placeholder="не менее 2-х символов"
+        />
       </fieldset>
       <div class="buttons">
         <button
