@@ -6,13 +6,13 @@ const contactsStore = useContactsStore();
 </script>
 
 <template>
-  <div class="contacts">
+  <TransitionGroup class="contacts" name="list" tag="ul">
     <ContactItem
       v-for="contact in contactsStore.contacts"
       :key="contact.id"
       :user="contact"
     />
-  </div>
+  </TransitionGroup>
 </template>
 
 <style scoped>
@@ -20,5 +20,16 @@ const contactsStore = useContactsStore();
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
+}
+
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.5s ease;
+}
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
 }
 </style>

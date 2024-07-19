@@ -27,12 +27,12 @@ const props = defineProps<Props>();
 
 <style scoped>
 .contact {
-  width: 357px;
-  height: 314px;
+  width: 300px;
+  height: 300px;
   border-radius: 16px;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
   padding: 24px;
-  margin: 24px;
+  margin: 15px;
   margin-bottom: 24px;
   cursor: pointer;
 }
