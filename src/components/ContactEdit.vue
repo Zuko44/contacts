@@ -44,9 +44,13 @@ const saveContact = () => {
     phone: phone.value,
     email: email.value,
   };
-  contactsStore.editContactHandler(user);
-  isShowError.value = 'success';
-  msg.value = 'Контакт изменён успешно!';
+  const result = contactsStore.editContactHandler(user);
+  if (result != 'contact not found!') {
+    isShowError.value = 'success';
+    msg.value = 'Контакт изменён успешно!';
+  } else {
+    msg.value = result;
+  }
 };
 
 const deleteContactHandler = (id: number) => {
