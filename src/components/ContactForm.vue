@@ -29,9 +29,9 @@ const createContactHandler = () => {
   ) {
     const contact: Contact = {
       id: Math.floor(Math.random() * 1000000),
-      name: name.value,
-      phone: phone.value,
-      email: email.value,
+      name: name.value.trim(),
+      phone: phone.value.trim(),
+      email: email.value.trim(),
     };
     contactsStore.createContactHandler(contact);
     name.value = '';
