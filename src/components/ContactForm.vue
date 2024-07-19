@@ -53,9 +53,19 @@ const createContactHandler = () => {
       <div v-if="msg.length > 1" :class="isShowError">{{ msg }}</div>
     </Transition>
     <form @submit.prevent>
-      <input v-model="name" class="input" type="text" placeholder="Name" />
-      <input v-model="phone" class="input" type="tel" placeholder="Phone" />
-      <input v-model="email" class="input" type="email" placeholder="Email" />
+      <input v-model.trim="name" class="input" type="text" placeholder="Name" />
+      <input
+        v-model.trim="phone"
+        class="input"
+        type="tel"
+        placeholder="Phone"
+      />
+      <input
+        v-model.trim="email"
+        class="input"
+        type="email"
+        placeholder="Email"
+      />
       <button @click="createContactHandler" class="btn">Add new contact</button>
     </form>
   </div>
