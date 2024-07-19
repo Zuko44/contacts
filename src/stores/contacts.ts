@@ -2,10 +2,12 @@ import type { Contact } from '../types/index';
 import { ref, onMounted } from 'vue';
 import { defineStore } from 'pinia';
 import communications from '../sources/contacts.json';
+import { useRouter } from 'vue-router';
 
 export const useContactsStore = defineStore('taskStore', () => {
   const contacts = ref<Contact[]>([]);
   const temporaryStorageContacts = ref<Contact[]>([]);
+  const router = useRouter();
 
   const deleteContactHandler = (id: number) => {
     temporaryStorageContacts.value = temporaryStorageContacts.value.filter(
@@ -24,7 +26,7 @@ export const useContactsStore = defineStore('taskStore', () => {
       contact.phone = user.phone;
       contact.email = user.email;
     } else {
-      return 'contact not found';
+      return 'contact not found!';
     }
     contacts.value = temporaryStorageContacts.value;
     saveContacts();

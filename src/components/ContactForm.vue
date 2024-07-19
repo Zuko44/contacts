@@ -43,7 +43,6 @@ const createContactHandler = () => {
   } else {
     isShowError.value = 'error';
     msg.value = 'Проверьте корректность полей и их заполнение!';
-    console.log('error');
   }
 };
 </script>

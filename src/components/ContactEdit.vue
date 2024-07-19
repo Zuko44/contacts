@@ -29,11 +29,11 @@ const MIN_PHONE_LENGTH = 10;
 const getContact = (id: number) => {
   const result = contactsStore.contacts.find((contact) => contact.id === id);
   if (result) {
-    console.log(result);
-
     name.value = result.name;
     phone.value = result.phone;
     email.value = result.email;
+  } else {
+    router.push('/');
   }
 };
 
